@@ -1,0 +1,100 @@
+@use '../../styles/variables' as *;
+
+.container {
+  position: fixed;
+  top: $spacing-6;
+  right: $spacing-6;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+  width: 100%;
+  max-width: 350px;
+  pointer-events: none;
+
+  @media (max-width: $breakpoint-mobile) {
+    top: auto;
+    bottom: $spacing-6;
+    right: 50%;
+    transform: translateX(50%);
+    max-width: calc(100% - (#{$spacing-6} * 2));
+  }
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-4 $spacing-5;
+  background: white;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  border: 1px solid $color-border;
+  color: $color-text-main;
+  font-family: $font-body;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.95);
+
+  &.success {
+    border-left: 4px solid $color-success;
+    .iconContainer {
+      color: $color-success;
+    }
+  }
+
+  &.error {
+    border-left: 4px solid $color-error;
+    .iconContainer {
+      color: $color-error;
+    }
+  }
+
+  &.info {
+    border-left: 4px solid $color-primary;
+    .iconContainer {
+      color: $color-primary;
+    }
+  }
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.message {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-muted;
+  transition: color 0.2s;
+  padding: 2px;
+  border-radius: $radius-sm;
+
+  &:hover {
+    color: $color-text-main;
+    background: $color-bg-alt;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
