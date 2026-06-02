@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Truck } from 'lucide-react';
 import styles from './ProductInfoPanel.module.scss';
 import type { EnrichedProduct, ProductVariant } from '../../types';
 import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
@@ -38,15 +39,12 @@ export function ProductInfoPanel({
   const originalPrice = selectedVariant.originalPrice;
   const isOnSale = !!originalPrice && originalPrice > currentPrice;
 
-  // Handle color change: reset quantity, clear size if not available in new color
   const handleColorChange = (newColor: string) => {
     onColorChange(newColor);
     setQuantity(1);
     
-    // Check if current size exists in new variant
     const newVariant = product.variants.find(v => v.color.name === newColor);
     if (newVariant && !newVariant.sizes.find(s => s.label === selectedSize)) {
-      // If the currently selected size doesn't exist for the new color, select the first available size
       const firstAvailable = newVariant.sizes.find(s => s.stock > 0);
       onSizeChange(firstAvailable ? firstAvailable.label : newVariant.sizes[0].label);
     }
@@ -70,7 +68,6 @@ export function ProductInfoPanel({
     });
   };
 
-  // Generate delivery estimate date (e.g., 3 days from now)
   const deliveryDate = new Date();
   deliveryDate.setDate(deliveryDate.getDate() + 3);
   const deliveryString = deliveryDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
@@ -123,12 +120,7 @@ export function ProductInfoPanel({
 
       {!isSoldOut && (
         <div className={styles.deliveryInfo}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="1" y="3" width="15" height="13"></rect>
-            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-            <circle cx="5.5" cy="18.5" r="2.5"></circle>
-            <circle cx="18.5" cy="18.5" r="2.5"></circle>
-          </svg>
+          <Truck size={20} />
           <p>Order within <strong>14 hrs</strong> for delivery by <strong>{deliveryString}</strong></p>
         </div>
       )}

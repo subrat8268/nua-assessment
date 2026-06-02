@@ -13,7 +13,6 @@ export function ImageGallery({ images, productTitle }: Props) {
   const imageRef = useRef<HTMLImageElement>(null);
   const thumbsRef = useRef<HTMLDivElement>(null);
 
-  // Reset to first image when images array changes (e.g., color change)
   useEffect(() => {
     setSelectedIndex(0);
   }, [images]);
@@ -68,7 +67,6 @@ export function ImageGallery({ images, productTitle }: Props) {
               </button>
             ))}
           </div>
-          {/* Mobile dots indicator */}
           <div className={styles.dots} aria-hidden="true">
             {images.map((_, index) => (
               <div 

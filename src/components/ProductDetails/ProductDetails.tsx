@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { ChevronDown, ChevronUp, FileText, Sliders, MessageSquare } from 'lucide-react';
 import styles from './ProductDetails.module.scss';
 import type { EnrichedProduct } from '../../types';
 import { mockReviews } from '../../data/mockReviews';
@@ -78,36 +79,51 @@ export function ProductDetails({ product }: Props) {
       <div className={styles.accordionContainer}>
         <div className={styles.accordionSection}>
           <button 
-            className={styles.accordionHeader}
-            onClick={() => setExpandedSection(expandedSection === 'description' ? null : 'description')}
-            aria-expanded={expandedSection === 'description'}
+             className={styles.accordionHeader}
+             onClick={() => setExpandedSection(expandedSection === 'description' ? null : 'description')}
+             aria-expanded={expandedSection === 'description'}
           >
-            Description
-            <span className={styles.accordionIcon}>{expandedSection === 'description' ? '−' : '+'}</span>
+            <span className={styles.accordionTitle}>
+              <FileText size={18} />
+              Description
+            </span>
+            <span className={styles.accordionIcon}>
+              {expandedSection === 'description' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            </span>
           </button>
           {expandedSection === 'description' && renderDescription()}
         </div>
 
         <div className={styles.accordionSection}>
           <button 
-            className={styles.accordionHeader}
-            onClick={() => setExpandedSection(expandedSection === 'specs' ? null : 'specs')}
-            aria-expanded={expandedSection === 'specs'}
+             className={styles.accordionHeader}
+             onClick={() => setExpandedSection(expandedSection === 'specs' ? null : 'specs')}
+             aria-expanded={expandedSection === 'specs'}
           >
-            Specifications
-            <span className={styles.accordionIcon}>{expandedSection === 'specs' ? '−' : '+'}</span>
+            <span className={styles.accordionTitle}>
+              <Sliders size={18} />
+              Specifications
+            </span>
+            <span className={styles.accordionIcon}>
+              {expandedSection === 'specs' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            </span>
           </button>
           {expandedSection === 'specs' && renderSpecs()}
         </div>
 
         <div className={styles.accordionSection}>
           <button 
-            className={styles.accordionHeader}
-            onClick={() => setExpandedSection(expandedSection === 'reviews' ? null : 'reviews')}
-            aria-expanded={expandedSection === 'reviews'}
+             className={styles.accordionHeader}
+             onClick={() => setExpandedSection(expandedSection === 'reviews' ? null : 'reviews')}
+             aria-expanded={expandedSection === 'reviews'}
           >
-            Reviews ({product.rating.count})
-            <span className={styles.accordionIcon}>{expandedSection === 'reviews' ? '−' : '+'}</span>
+            <span className={styles.accordionTitle}>
+              <MessageSquare size={18} />
+              Reviews ({product.rating.count})
+            </span>
+            <span className={styles.accordionIcon}>
+              {expandedSection === 'reviews' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            </span>
           </button>
           {expandedSection === 'reviews' && renderReviews()}
         </div>
@@ -115,7 +131,6 @@ export function ProductDetails({ product }: Props) {
     );
   }
 
-  // Desktop Tabs
   return (
     <div className={styles.tabsContainer}>
       <div className={styles.tabList} role="tablist">
@@ -125,7 +140,8 @@ export function ProductDetails({ product }: Props) {
           className={`${styles.tabBtn} ${activeTab === 'description' ? styles.activeTab : ''}`}
           onClick={() => setActiveTab('description')}
         >
-          Description
+          <FileText size={16} />
+          <span>Description</span>
         </button>
         <button
           role="tab"
@@ -133,7 +149,8 @@ export function ProductDetails({ product }: Props) {
           className={`${styles.tabBtn} ${activeTab === 'specs' ? styles.activeTab : ''}`}
           onClick={() => setActiveTab('specs')}
         >
-          Specifications
+          <Sliders size={16} />
+          <span>Specifications</span>
         </button>
         <button
           role="tab"
@@ -141,7 +158,8 @@ export function ProductDetails({ product }: Props) {
           className={`${styles.tabBtn} ${activeTab === 'reviews' ? styles.activeTab : ''}`}
           onClick={() => setActiveTab('reviews')}
         >
-          Reviews ({product.rating.count})
+          <MessageSquare size={16} />
+          <span>Reviews ({product.rating.count})</span>
         </button>
       </div>
 

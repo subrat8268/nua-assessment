@@ -15,11 +15,9 @@ export function AddToCartButton({ onAdd, disabled, text = 'Add to Cart' }: Props
 
     setStatus('loading');
 
-    // Mock async delay (1 second)
     try {
       await new Promise((resolve, reject) => {
         setTimeout(() => {
-          // 10% chance of random failure to demonstrate error state
           if (Math.random() < 0.1) {
             reject(new Error('Network error'));
           } else {
@@ -31,7 +29,6 @@ export function AddToCartButton({ onAdd, disabled, text = 'Add to Cart' }: Props
       onAdd();
       setStatus('success');
       
-      // Reset after success
       setTimeout(() => {
         setStatus('idle');
       }, 2000);

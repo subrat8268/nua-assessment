@@ -21,7 +21,6 @@ export function useProduct(productId: number) {
         const data: Product = await res.json();
         
         if (isMounted) {
-          // Augment with mock data
           const variants = mockVariants[productId] || [];
           setProduct({
             ...data,

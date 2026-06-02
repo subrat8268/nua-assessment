@@ -41,8 +41,9 @@
 }
 
 .closeBtn {
-  font-size: 2rem;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: $color-text-muted;
   transition: color 0.2s;
 
@@ -61,10 +62,20 @@
   text-align: center;
   padding: $spacing-8 0;
   color: $color-text-muted;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-3;
 
   p {
-    margin-bottom: $spacing-6;
+    margin-bottom: $spacing-2;
   }
+}
+
+.emptyIcon {
+  color: $color-text-muted;
+  opacity: 0.5;
 }
 
 .continueBtn {
@@ -152,9 +163,11 @@
 }
 
 .removeBtn {
+  display: flex;
+  align-items: center;
+  gap: $spacing-1;
   font-size: 0.8rem;
   color: $color-text-muted;
-  text-decoration: underline;
 
   &:hover {
     color: $color-error;

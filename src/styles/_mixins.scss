@@ -1,7 +1,5 @@
 @use './variables' as *;
 
-// ── Mixins ────────────────────────────────────────────────────────
-
 @mixin respond-to($breakpoint) {
   @if $breakpoint == mobile {
     @media (max-width: #{$breakpoint-mobile}) {

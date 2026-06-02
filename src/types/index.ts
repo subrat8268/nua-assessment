@@ -1,4 +1,3 @@
-// ── Product from Fake Store API ──────────────────────────────────────
 export interface Product {
   id: number;
   title: string;
@@ -12,7 +11,6 @@ export interface Product {
   };
 }
 
-// ── Variant data (local mock augmentation) ──────────────────────────
 export interface ColorOption {
   name: string;
   hex: string;
@@ -20,17 +18,16 @@ export interface ColorOption {
 
 export interface SizeOption {
   label: string;
-  stock: number; // 0 = sold out
+  stock: number;
 }
 
 export interface ProductVariant {
   color: ColorOption;
   sizes: SizeOption[];
   images: string[];
-  originalPrice?: number; // set when item is on sale
+  originalPrice?: number;
 }
 
-// ── Enriched product combining API + mock data ──────────────────────
 export interface EnrichedProduct extends Product {
   variants: ProductVariant[];
   specs: Specification[];
@@ -41,7 +38,6 @@ export interface Specification {
   value: string;
 }
 
-// ── Cart ─────────────────────────────────────────────────────────────
 export interface CartItem {
   productId: number;
   title: string;
@@ -53,7 +49,6 @@ export interface CartItem {
   maxStock: number;
 }
 
-// ── Reviews ──────────────────────────────────────────────────────────
 export interface Review {
   id: string;
   author: string;
@@ -64,7 +59,6 @@ export interface Review {
   verified: boolean;
 }
 
-// ── Cart Actions ─────────────────────────────────────────────────────
 export type CartAction =
   | { type: 'ADD_ITEM'; payload: CartItem }
   | { type: 'REMOVE_ITEM'; payload: { productId: number; color: string; size: string } }

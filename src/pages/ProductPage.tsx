@@ -18,7 +18,6 @@ export function ProductPage() {
   const { product, loading, error } = useProduct(productId);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Fallback to first available options if url params missing or invalid
   const defaultColor = product?.variants?.[0]?.color?.name || '';
   const defaultSize = product?.variants?.[0]?.sizes?.find(s => s.stock > 0)?.label || '';
 
@@ -28,10 +27,8 @@ export function ProductPage() {
   const selectedColor = colorParam || defaultColor;
   const selectedSize = sizeParam || defaultSize;
 
-  // Find the currently selected variant data
   const selectedVariant = product?.variants?.find(v => v.color.name === selectedColor) || product?.variants?.[0];
 
-  // Set default params in URL if they are empty on first load
   useEffect(() => {
     if (product && !colorParam && defaultColor) {
       setColorParam(defaultColor);
@@ -51,7 +48,6 @@ export function ProductPage() {
   return (
     <>
       <div onClickCapture={(e) => {
-        // Intercept clicks on header cart button to open drawer
         const target = e.target as HTMLElement;
         const btn = target.closest('button[aria-label="Open cart"]');
         if (btn) {

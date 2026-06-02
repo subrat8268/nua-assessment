@@ -1,3 +1,4 @@
+import { AlertTriangle } from 'lucide-react';
 import styles from './ErrorBoundary.module.scss';
 
 interface Props {
@@ -8,7 +9,9 @@ interface Props {
 export function ErrorBoundary({ message = 'Something went wrong', onRetry }: Props) {
   return (
     <div className={styles.container}>
-      <div className={styles.icon}>!</div>
+      <div className={styles.icon}>
+        <AlertTriangle size={24} />
+      </div>
       <h2 className={styles.title}>Oops!</h2>
       <p className={styles.message}>{message}</p>
       {onRetry && (

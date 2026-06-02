@@ -35,7 +35,7 @@
 
 .infoColumn {
   position: sticky;
-  top: 100px; // account for header
+  top: 100px;
   align-self: start;
 
   @include respond-to(mobile) {

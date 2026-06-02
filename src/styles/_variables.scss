@@ -1,32 +1,30 @@
-// ── Design Tokens ───────────────────────────────────────────────────
-
-$color-primary: #2D5016;       // Deep forest green
-$color-primary-hover: #3A631F; // Lighter green for hover
-$color-accent: #D4722A;        // Burnt orange for CTAs
-$color-accent-hover: #E38642;  // Lighter orange
-$color-success: #1E8F43;       // Success green
-$color-error: #D13B3B;         // Error red
-$color-warning: #E8A21C;       // Warning yellow
-$color-text-main: #1A1A1A;     // Charcoal
-$color-text-muted: #6B655E;    // Warm grey
-$color-bg-main: #FDFCFB;       // Off-white
-$color-bg-alt: #F5F0EB;        // Stone
-$color-border: #E8E2DA;        // Light border
+$color-primary: #2D5016;
+$color-primary-hover: #3A631F;
+$color-accent: #D4722A;
+$color-accent-hover: #E38642;
+$color-success: #1E8F43;
+$color-error: #D13B3B;
+$color-warning: #E8A21C;
+$color-text-main: #1A1A1A;
+$color-text-muted: #6B655E;
+$color-bg-main: #FDFCFB;
+$color-bg-alt: #F5F0EB;
+$color-border: #E8E2DA;
 
 $font-heading: 'Outfit', sans-serif;
 $font-body: 'Inter', sans-serif;
 
 $spacing-base: 4px;
-$spacing-1: $spacing-base * 1;  // 4px
-$spacing-2: $spacing-base * 2;  // 8px
-$spacing-3: $spacing-base * 3;  // 12px
-$spacing-4: $spacing-base * 4;  // 16px
-$spacing-5: $spacing-base * 5;  // 20px
-$spacing-6: $spacing-base * 6;  // 24px
-$spacing-8: $spacing-base * 8;  // 32px
-$spacing-10: $spacing-base * 10; // 40px
-$spacing-12: $spacing-base * 12; // 48px
-$spacing-16: $spacing-base * 16; // 64px
+$spacing-1: $spacing-base * 1;
+$spacing-2: $spacing-base * 2;
+$spacing-3: $spacing-base * 3;
+$spacing-4: $spacing-base * 4;
+$spacing-5: $spacing-base * 5;
+$spacing-6: $spacing-base * 6;
+$spacing-8: $spacing-base * 8;
+$spacing-10: $spacing-base * 10;
+$spacing-12: $spacing-base * 12;
+$spacing-16: $spacing-base * 16;
 
 $radius-sm: 2px;
 $radius-md: 4px;

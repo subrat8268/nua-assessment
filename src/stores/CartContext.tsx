@@ -30,7 +30,6 @@ function cartReducer(state: CartState, action: CartAction): CartState {
       );
 
       if (existingItemIndex >= 0) {
-        // Item exists, just update quantity (cap at maxStock)
         const updatedItems = [...state.items];
         const item = updatedItems[existingItemIndex];
         const newQty = Math.min(item.quantity + action.payload.quantity, item.maxStock);
@@ -38,7 +37,6 @@ function cartReducer(state: CartState, action: CartAction): CartState {
         return { items: updatedItems };
       }
 
-      // New item
       return { items: [...state.items, action.payload] };
     }
 
@@ -81,7 +79,6 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 const CART_STORAGE_KEY = 'pdp-cart-storage';
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Initialize from local storage if available
   const [state, dispatch] = useReducer(cartReducer, initialState, (initial) => {
     try {
       const stored = localStorage.getItem(CART_STORAGE_KEY);
@@ -91,7 +88,6 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   });
 
-  // Sync to local storage on change
   useEffect(() => {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(state));
   }, [state]);

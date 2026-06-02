@@ -1,3 +1,4 @@
+import { Minus, Plus } from 'lucide-react';
 import styles from './QuantityPicker.module.scss';
 
 interface Props {
@@ -37,7 +38,7 @@ export function QuantityPicker({ quantity, maxStock, onChange, disabled = false 
           disabled={disabled || quantity <= 1}
           aria-label="Decrease quantity"
         >
-          &minus;
+          <Minus size={14} />
         </button>
         <input
           type="number"
@@ -55,7 +56,7 @@ export function QuantityPicker({ quantity, maxStock, onChange, disabled = false 
           disabled={disabled || quantity >= maxStock}
           aria-label="Increase quantity"
         >
-          &#43;
+          <Plus size={14} />
         </button>
       </div>
     </div>

@@ -12,7 +12,7 @@ export function useURLState(key: string, defaultValue: string) {
         updated.set(key, newValue);
         return updated;
       },
-      { replace: true } // Don't build up a massive history stack for color/size clicks
+      { replace: true }
     );
   };
 

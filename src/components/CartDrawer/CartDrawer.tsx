@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import styles from './CartDrawer.module.scss';
 import { useCart } from '../../stores/CartContext';
 
@@ -10,7 +11,6 @@ interface Props {
 export function CartDrawer({ isOpen, onClose }: Props) {
   const { items, removeFromCart, updateQuantity, cartTotal, cartCount } = useCart();
 
-  // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) onClose();
@@ -19,7 +19,6 @@ export function CartDrawer({ isOpen, onClose }: Props) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Prevent background scroll when open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -40,13 +39,14 @@ export function CartDrawer({ isOpen, onClose }: Props) {
         <div className={styles.header}>
           <h2>Your Cart ({cartCount})</h2>
           <button className={styles.closeBtn} onClick={onClose} aria-label="Close cart">
-            &times;
+            <X size={24} />
           </button>
         </div>
 
         <div className={styles.content}>
           {items.length === 0 ? (
             <div className={styles.emptyState}>
+              <ShoppingBag size={48} className={styles.emptyIcon} />
               <p>Your cart is empty.</p>
               <button className={styles.continueBtn} onClick={onClose}>
                 Continue Shopping
@@ -68,21 +68,22 @@ export function CartDrawer({ isOpen, onClose }: Props) {
                           onClick={() => updateQuantity(item.productId, item.color, item.size, item.quantity - 1)}
                           disabled={item.quantity <= 1}
                         >
-                          &minus;
+                          <Minus size={14} />
                         </button>
                         <span>{item.quantity}</span>
                         <button 
                           onClick={() => updateQuantity(item.productId, item.color, item.size, item.quantity + 1)}
                           disabled={item.quantity >= item.maxStock}
                         >
-                          &#43;
+                          <Plus size={14} />
                         </button>
                       </div>
                       <button 
                         className={styles.removeBtn}
                         onClick={() => removeFromCart(item.productId, item.color, item.size)}
                       >
-                        Remove
+                        <Trash2 size={14} />
+                        <span>Remove</span>
                       </button>
                     </div>
                   </div>

@@ -1,7 +1,6 @@
 import type { ProductVariant } from "../types";
 
 export const mockVariants: Record<number, ProductVariant[]> = {
-  // Fjallraven - Foldsack No. 1 Backpack
   1: [
     {
       color: { name: "Forest Green", hex: "#2D5016" },
@@ -11,12 +10,12 @@ export const mockVariants: Record<number, ProductVariant[]> = {
         "https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&q=80&w=800",
         "https://images.unsplash.com/photo-1581605405669-fcdf81165afa?auto=format&fit=crop&q=80&w=800",
       ],
-      originalPrice: 129.95, // On sale from 129.95 to 109.95
+      originalPrice: 129.95,
     },
     {
       color: { name: "Charcoal", hex: "#333333" },
       sizes: [
-        { label: "One Size", stock: 2 }, // Low stock
+        { label: "One Size", stock: 2 },
       ],
       images: [
         "https://images.unsplash.com/photo-1546938576-6e6a64f317cc?auto=format&fit=crop&q=80&w=800",
@@ -26,20 +25,19 @@ export const mockVariants: Record<number, ProductVariant[]> = {
     {
       color: { name: "Navy", hex: "#1C2E4A" },
       sizes: [
-        { label: "One Size", stock: 0 }, // Sold out
+        { label: "One Size", stock: 0 },
       ],
       images: ["https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"],
     },
   ],
-  // Mens Casual Premium Slim Fit T-Shirts
   2: [
     {
       color: { name: "White/Black", hex: "#FFFFFF" },
       sizes: [
         { label: "S", stock: 5 },
         { label: "M", stock: 12 },
-        { label: "L", stock: 0 }, // Sold out size
-        { label: "XL", stock: 2 }, // Low stock
+        { label: "L", stock: 0 },
+        { label: "XL", stock: 2 },
       ],
       images: [
         "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
@@ -60,13 +58,12 @@ export const mockVariants: Record<number, ProductVariant[]> = {
       ],
     },
   ],
-  // Mens Cotton Jacket
   3: [
     {
       color: { name: "Khaki", hex: "#C3B091" },
       sizes: [
         { label: "M", stock: 4 },
-        { label: "L", stock: 2 }, // Low stock
+        { label: "L", stock: 2 },
         { label: "XL", stock: 10 },
       ],
       images: [
@@ -77,9 +74,9 @@ export const mockVariants: Record<number, ProductVariant[]> = {
     {
       color: { name: "Olive", hex: "#556B2F" },
       sizes: [
-        { label: "M", stock: 0 }, // Sold out
-        { label: "L", stock: 0 }, // Sold out
-        { label: "XL", stock: 0 }, // Sold out
+        { label: "M", stock: 0 },
+        { label: "L", stock: 0 },
+        { label: "XL", stock: 0 },
       ],
       images: [
         "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800",

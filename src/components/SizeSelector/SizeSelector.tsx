@@ -14,7 +14,6 @@ export function SizeSelector({ sizes, selectedSize, onSelect }: Props) {
         <h3 className={styles.label}>
           Size: <span className={styles.selectedName}>{selectedSize || 'Select a size'}</span>
         </h3>
-        {/* Optional size guide link could go here */}
       </div>
       <div className={styles.sizeList} role="radiogroup" aria-label="Select size">
         {sizes.map((size) => {
