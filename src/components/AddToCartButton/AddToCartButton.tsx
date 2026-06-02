@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useToast } from '../../stores/ToastContext';
 import styles from './AddToCartButton.module.scss';
 
 interface Props {
@@ -8,48 +9,55 @@ interface Props {
 }
 
 export function AddToCartButton({ onAdd, disabled, text = 'Add to Cart' }: Props) {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [isLoading, setIsLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const { addToast } = useToast();
 
   const handleClick = async () => {
-    if (disabled || status === 'loading') return;
-
-    setStatus('loading');
-
-    try {
-      await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          if (Math.random() < 0.1) {
-            reject(new Error('Network error'));
-          } else {
-            resolve(true);
-          }
-        }, 1000);
-      });
-
-      onAdd();
-      setStatus('success');
-      
-      setTimeout(() => {
-        setStatus('idle');
-      }, 2000);
-    } catch (err) {
-      setStatus('error');
-      setTimeout(() => {
-        setStatus('idle');
-      }, 3000);
+    if (disabled || isLoading) return;
+    setIsLoading(true);
+    setFailed(false);
+    setSuccess(false);
+    
+    await new Promise(res => setTimeout(res, 800));
+    
+    if (Math.random() < 0.2) {
+      setFailed(true);
+      setIsLoading(false);
+      addToast('Connection timeout. Failed to add item to cart.', 'error');
+      return;
     }
+    
+    onAdd();
+    setSuccess(true);
+    setIsLoading(false);
+    addToast('Item added to cart successfully!', 'success');
+    
+    setTimeout(() => {
+      setSuccess(false);
+    }, 2000);
   };
+
+  const buttonClass = `${styles.button} ${
+    isLoading ? styles.loading : success ? styles.success : failed ? styles.error : ''
+  }`;
 
   return (
     <button
-      className={`${styles.button} ${styles[status]}`}
+      className={buttonClass}
       onClick={handleClick}
-      disabled={disabled || status === 'loading'}
+      disabled={disabled || isLoading}
     >
-      {status === 'idle' && <span>{text}</span>}
-      {status === 'loading' && <span className={styles.spinner} />}
-      {status === 'success' && <span>Added to Cart ✓</span>}
-      {status === 'error' && <span>Failed. Try again</span>}
+      {isLoading && (
+        <span className={styles.loaderContent}>
+          <span className={styles.spinner} />
+          <span>Adding...</span>
+        </span>
+      )}
+      {success && <span>Added!</span>}
+      {failed && <span>Try again</span>}
+      {!isLoading && !success && !failed && <span>{text}</span>}
     </button>
   );
 }
