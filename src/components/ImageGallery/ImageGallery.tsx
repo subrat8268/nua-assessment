@@ -40,6 +40,9 @@ export function ImageGallery({ images, productTitle }: Props) {
           src={selectedImage}
           alt={productTitle}
           className={`${styles.mainImage} ${isZooming ? styles.hidden : ''}`}
+          width={600}
+          height={600}
+          loading="eager"
         />
         {isZooming && (
           <div
@@ -63,7 +66,14 @@ export function ImageGallery({ images, productTitle }: Props) {
                 className={`${styles.thumbnailBtn} ${index === selectedIndex ? styles.active : ''}`}
                 onClick={() => setSelectedIndex(index)}
               >
-                <img src={img} alt={`Thumbnail ${index + 1}`} className={styles.thumbnailImg} />
+                <img 
+                  src={img} 
+                  alt={`Thumbnail ${index + 1}`} 
+                  className={styles.thumbnailImg} 
+                  width={80}
+                  height={80}
+                  loading="lazy"
+                />
               </button>
             ))}
           </div>

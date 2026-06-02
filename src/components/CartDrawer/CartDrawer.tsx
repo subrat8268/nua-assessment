@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import styles from './CartDrawer.module.scss';
 import { useCart } from '../../stores/CartContext';
+import { useToast } from '../../stores/ToastContext';
 
 interface Props {
   isOpen: boolean;
@@ -10,6 +11,7 @@ interface Props {
 
 export function CartDrawer({ isOpen, onClose }: Props) {
   const { items, removeFromCart, updateQuantity, cartTotal, cartCount } = useCart();
+  const { addToast } = useToast();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -29,6 +31,11 @@ export function CartDrawer({ isOpen, onClose }: Props) {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  const handleRemove = (productId: number, color: string, size: string, title: string) => {
+    removeFromCart(productId, color, size);
+    addToast(`${title} (${color} / ${size}) removed from cart.`, 'info');
+  };
 
   if (!isOpen) return null;
 
@@ -56,7 +63,14 @@ export function CartDrawer({ isOpen, onClose }: Props) {
             <ul className={styles.itemList}>
               {items.map((item) => (
                 <li key={`${item.productId}-${item.color}-${item.size}`} className={styles.cartItem}>
-                  <img src={item.image} alt={item.title} className={styles.itemImage} />
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className={styles.itemImage} 
+                    width={80}
+                    height={80}
+                    loading="lazy"
+                  />
                   <div className={styles.itemDetails}>
                     <h4 className={styles.itemTitle}>{item.title}</h4>
                     <p className={styles.itemVariant}>
@@ -80,7 +94,7 @@ export function CartDrawer({ isOpen, onClose }: Props) {
                       </div>
                       <button 
                         className={styles.removeBtn}
-                        onClick={() => removeFromCart(item.productId, item.color, item.size)}
+                        onClick={() => handleRemove(item.productId, item.color, item.size, item.title)}
                       >
                         <Trash2 size={14} />
                         <span>Remove</span>
