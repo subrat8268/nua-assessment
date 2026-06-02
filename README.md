@@ -2,6 +2,10 @@
 
 A production-quality Product Detail Page (PDP) built for a premium outdoor gear store. Created as a Frontend Developer Assignment.
 
+## 🔗 Live Demo
+
+**[https://nua-assessment-pi.vercel.app/](https://nua-assessment-pi.vercel.app/)**
+
 ## Features
 
 - **Dynamic Image Gallery**: Primary image zoom on hover (desktop), horizontal scrolling with dot indicators (mobile), and thumbnail selection.
