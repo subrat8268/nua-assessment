@@ -1,0 +1,53 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.main {
+  flex: 1;
+  background: $color-bg-main;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-8 $spacing-5;
+  
+  @include respond-to(mobile) {
+    padding: $spacing-4 $spacing-5;
+  }
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: $spacing-12;
+  margin-bottom: $spacing-16;
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+    margin-bottom: $spacing-8;
+  }
+}
+
+.galleryColumn {
+  position: relative;
+}
+
+.infoColumn {
+  position: sticky;
+  top: 100px; // account for header
+  align-self: start;
+
+  @include respond-to(mobile) {
+    position: static;
+  }
+}
+
+.bottomSection {
+  border-top: 1px solid $color-border;
+  padding-top: $spacing-12;
+  
+  @include respond-to(mobile) {
+    padding-top: $spacing-6;
+  }
+}
