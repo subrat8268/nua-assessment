@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  margin-bottom: $spacing-6;
+}
+
+.label {
+  font-family: $font-body;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: $spacing-3;
+  color: $color-text-muted;
+}
+
+.selectedName {
+  color: $color-text-main;
+  font-weight: 600;
+}
+
+.swatchList {
+  display: flex;
+  gap: $spacing-3;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-full;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  position: relative;
+  transition: transform 0.2s;
+  
+  @include focus-ring;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &.selected {
+    &::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border: 1px solid $color-text-main;
+      border-radius: $radius-full;
+    }
+  }
+}

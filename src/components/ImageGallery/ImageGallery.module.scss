@@ -1,0 +1,131 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.mainImageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: white;
+  border-radius: $radius-md;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: 1px solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include respond-to(mobile) {
+    cursor: default;
+  }
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.2s;
+
+  &.hidden {
+    opacity: 0;
+    @include respond-to(mobile) {
+      opacity: 1; // disable zoom hide on mobile
+    }
+  }
+}
+
+.zoomedImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  // Use a large background size to create the zoom effect
+  background-size: 200%;
+  pointer-events: none;
+
+  @include respond-to(mobile) {
+    display: none;
+  }
+}
+
+.thumbnailsContainer {
+  width: 100%;
+}
+
+.thumbnails {
+  display: flex;
+  gap: $spacing-3;
+  
+  @include respond-to(mobile) {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: $spacing-2;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.thumbnailBtn {
+  flex: 0 0 calc(25% - ($spacing-3 * 0.75));
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  padding: 0;
+  background: white;
+  transition: border-color 0.2s;
+
+  @include respond-to(mobile) {
+    flex: 0 0 80px;
+    scroll-snap-align: start;
+  }
+
+  &:hover {
+    border-color: rgba($color-primary, 0.3);
+  }
+
+  &.active {
+    border-color: $color-primary;
+  }
+}
+
+.thumbnailImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: $spacing-1;
+}
+
+.dots {
+  display: none;
+  
+  @include respond-to(mobile) {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-2;
+    margin-top: $spacing-3;
+  }
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $color-border;
+  transition: background 0.3s;
+
+  &.activeDot {
+    background: $color-primary;
+  }
+}

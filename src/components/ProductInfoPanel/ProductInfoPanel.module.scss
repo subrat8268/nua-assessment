@@ -1,0 +1,93 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  font-family: $font-heading;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $color-primary;
+  margin-bottom: $spacing-2;
+}
+
+.title {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  margin-bottom: $spacing-4;
+
+  @include respond-to(mobile) {
+    font-size: 1.75rem;
+  }
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  margin-bottom: $spacing-6;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  
+  &.salePrice {
+    color: $color-error;
+  }
+}
+
+.originalPrice {
+  font-size: 1.25rem;
+  color: $color-text-muted;
+  text-decoration: line-through;
+}
+
+.saleBadge {
+  background: $color-error;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: $radius-full;
+  text-transform: uppercase;
+}
+
+.divider {
+  height: 1px;
+  background: $color-border;
+  margin-bottom: $spacing-6;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+  margin-top: $spacing-4;
+  margin-bottom: $spacing-6;
+}
+
+.deliveryInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-4;
+  background: $color-bg-alt;
+  border-radius: $radius-md;
+  color: $color-text-muted;
+  font-size: 0.9rem;
+
+  svg {
+    color: $color-primary;
+    flex-shrink: 0;
+  }
+
+  strong {
+    color: $color-text-main;
+  }
+}

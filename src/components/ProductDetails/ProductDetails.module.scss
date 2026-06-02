@@ -1,0 +1,173 @@
+@use '../../styles/variables' as *;
+
+// ── Shared Content Styles ─────────────────────────────────────────
+
+.content {
+  padding: $spacing-6 0;
+  color: $color-text-main;
+  line-height: 1.6;
+}
+
+.specsTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: $spacing-4;
+    border-bottom: 1px solid $color-border;
+    text-align: left;
+  }
+
+  th {
+    width: 30%;
+    font-weight: 600;
+    color: $color-text-muted;
+  }
+}
+
+.reviewsSummary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: $spacing-8;
+  padding: $spacing-6;
+  background: $color-bg-alt;
+  border-radius: $radius-md;
+}
+
+.ratingNumber {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: $font-heading;
+  color: $color-primary;
+}
+
+.ratingStars {
+  color: $color-warning;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-bottom: $spacing-2;
+}
+
+.ratingCount {
+  color: $color-text-muted;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+}
+
+.reviewCard {
+  border-bottom: 1px solid $color-border;
+  padding-bottom: $spacing-6;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  margin-bottom: $spacing-1;
+  font-size: 0.9rem;
+}
+
+.reviewAuthor {
+  font-weight: 600;
+}
+
+.verifiedBadge {
+  color: $color-success;
+  font-size: 0.8rem;
+  background: rgba($color-success, 0.1);
+  padding: 2px 6px;
+  border-radius: $radius-sm;
+}
+
+.reviewDate {
+  color: $color-text-muted;
+  margin-left: auto;
+}
+
+.reviewStars {
+  color: $color-warning;
+  margin-bottom: $spacing-2;
+}
+
+.reviewTitle {
+  font-weight: 600;
+  margin-bottom: $spacing-2;
+}
+
+// ── Desktop Tabs ──────────────────────────────────────────────────
+
+.tabsContainer {
+  margin-top: $spacing-12;
+}
+
+.tabList {
+  display: flex;
+  border-bottom: 2px solid $color-border;
+  gap: $spacing-8;
+}
+
+.tabBtn {
+  padding: $spacing-4 0;
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: $color-text-muted;
+  position: relative;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-text-main;
+  }
+
+  &.activeTab {
+    color: $color-primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: $color-primary;
+    }
+  }
+}
+
+// ── Mobile Accordion ──────────────────────────────────────────────
+
+.accordionContainer {
+  margin-top: $spacing-8;
+  border-top: 1px solid $color-border;
+}
+
+.accordionSection {
+  border-bottom: 1px solid $color-border;
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-5 0;
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: $color-text-main;
+}
+
+.accordionIcon {
+  font-size: 1.5rem;
+  color: $color-text-muted;
+  font-weight: 400;
+}

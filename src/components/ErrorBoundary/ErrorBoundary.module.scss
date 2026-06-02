@@ -1,0 +1,46 @@
+@use '../../styles/variables' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-16 $spacing-5;
+  text-align: center;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-full;
+  background: rgba($color-error, 0.1);
+  color: $color-error;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: $spacing-4;
+}
+
+.title {
+  margin-bottom: $spacing-2;
+}
+
+.message {
+  color: $color-text-muted;
+  margin-bottom: $spacing-6;
+}
+
+.button {
+  padding: $spacing-3 $spacing-6;
+  background: $color-text-main;
+  color: white;
+  border-radius: $radius-md;
+  font-weight: 600;
+  transition: background 0.2s;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+}

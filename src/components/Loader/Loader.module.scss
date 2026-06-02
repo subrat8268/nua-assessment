@@ -1,0 +1,41 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-8 $spacing-5;
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: $spacing-12;
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+    padding: $spacing-4 $spacing-5;
+  }
+}
+
+.gallerySkeleton {
+  aspect-ratio: 4/5;
+  background: $color-border;
+  border-radius: $radius-md;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.infoSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.line {
+  background: $color-border;
+  border-radius: $radius-sm;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+  100% { opacity: 0.6; }
+}
